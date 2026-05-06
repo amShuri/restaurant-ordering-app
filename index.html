@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Restaurant Ordering App</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Smythe&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="container header">
+        <h1>Jimmy's Diner</h1>
+        <p class="header-text">The best burgers and pizza in town.</p>
+    </header>
+    <main class="container main">
+        <section>
+            <h2 class="sr-only">Menu</h2>
+            <ul class="menu-list" id="menu-list"></ul>
+        </section>
+
+        <section class="order hidden" id="order" aria-live="polite">
+            <h2>Your order</h2>
+
+            <ul class="order-list" id="order-list"></ul>
+
+            <div class="order-total">
+                <span class="order-label">Total price: </span>
+                <span class="price" id="total-price"></span>
+            </div>
+
+            <button class="purchase-btn" id="purchase-btn">Complete order</button>
+        </section>
+
+        <section class="order-success hidden" id="order-success" aria-live="polite">
+            <h2>Order confirmed — it's on its way!</h2>
+        </section>
+    </main>
+
+    <dialog class="modal" id="modal" closedby="any">
+        <h2 class="modal-title">Enter card details</h2>
+        <form class="modal-form" id="modal-form">
+            <label for="name" class="sr-only">Name on the card</label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" required>
+
+            <label for="card-number" class="sr-only">Card number</label>
+            <input id="card-number" name="card-number" type="text" placeholder="Enter card number" required>
+
+            <label for="cvv" class="sr-only">CVV</label>
+            <input id="cvv" name="cvv" type="text" placeholder="Enter CVV" required>
+
+            <button type="submit" class="purchase-btn" id="pay-btn">Pay</button>
+        </form>
+    </dialog>
+
+    <script src="index.js" type="module"></script>
+</body>
+
+</html>
