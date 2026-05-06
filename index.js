@@ -203,12 +203,12 @@ function setHighlight(starId) {
     clearHighlight()
     
     for (let i = 0; i < starId; i++) {
-        starsEls[i].classList.add('highlight')
+        starEls[i].classList.add('highlight')
     }
 }
 
 function clearHighlight() {
-    starsEls.forEach((star) => star.classList.remove('highlight'))
+    starEls.forEach((star) => star.classList.remove('highlight'))
 }
 
 renderMenu()
