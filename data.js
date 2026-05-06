@@ -11,7 +11,7 @@ export const menuArray = [
         name: "Hamburger",
         category: 'main',
         ingredients: ["beef", "cheese", "lettuce"],
-        price: 12,
+        price: 10,
         emoji: "🍔",
         id: 1
     },
@@ -22,6 +22,14 @@ export const menuArray = [
         price: 12,
         emoji: "🍺",
         id: 2
+    },
+    {
+        name: "Soda",
+        category: "drink",
+        ingredients: ["carbonated water", "sugar", "flavoring", "caffeine"],
+        price: 4,
+        emoji: "🥤",
+        id: 3
     }
 ]
 
