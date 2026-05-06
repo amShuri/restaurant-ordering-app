@@ -147,6 +147,15 @@ button, dialog {
     position: relative;
 }
 
+.discount-label {
+    position: absolute;
+    right: -2px;
+    font-size: 0.65rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    bottom: -8px;
+    font-weight: bold;
+}
+
 /* Order Success */
 .order-success {
     background-color: #ECFDF5;

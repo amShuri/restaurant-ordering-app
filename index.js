@@ -6,6 +6,7 @@ const formEl = document.getElementById('modal-form')
 const orderListEl = document.getElementById('order-list')
 const totalPriceEl = document.getElementById('total-price')
 const orderSuccessEl = document.getElementById('order-success')
+const discountEl = document.getElementById('discount')
 
 let orderArr = []
 let isOrderComplete = false
@@ -66,14 +67,35 @@ function handlePayClick() {
     updateUI()
 }
 
-function getTotalPrice() {
-    return orderArr.reduce((total, current) => {
+function getPricing() {
+    const subTotal = orderArr.reduce((total, current) => {
         return total + (current.price * current.qty)
     }, 0)
+
+    const hasDiscount = hasComboDiscount()
+    const discountRate = hasDiscount ? 0.15 : 0
+    const discountAmount = subTotal * discountRate
+    const total = subTotal - discountAmount
+
+    return { total, discountAmount, hasDiscount }
+}
+
+function hasComboDiscount() {
+    return orderArr.some((item) => item.category === 'main') && 
+           orderArr.some((item) => item.category === 'drink')
 }
 
 function renderTotalPrice() {
-    totalPriceEl.textContent = `$${getTotalPrice().toFixed(2)}`
+    const { total, discountAmount, hasDiscount } = getPricing()
+
+    if (hasDiscount) {
+        discountEl.textContent = `(You save $${discountAmount.toFixed(2)})`
+    }
+    else {
+        discountEl.textContent = ''
+    }
+
+    totalPriceEl.textContent = `$${total.toFixed(2)}`
 }
 
 function updateUI() {
