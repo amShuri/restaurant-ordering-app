@@ -7,7 +7,7 @@ const orderListEl = document.getElementById('order-list')
 const totalPriceEl = document.getElementById('total-price')
 const orderSuccessEl = document.getElementById('order-success')
 const discountEl = document.getElementById('discount')
-const starsEls = document.querySelectorAll('.star')
+const starEls = document.querySelectorAll('.star')
 const starSection = document.getElementById('star-section')
 const feedbackMsg = document.getElementById('feedback-msg')
 
