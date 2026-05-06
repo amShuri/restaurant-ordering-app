@@ -7,6 +7,9 @@ const orderListEl = document.getElementById('order-list')
 const totalPriceEl = document.getElementById('total-price')
 const orderSuccessEl = document.getElementById('order-success')
 const discountEl = document.getElementById('discount')
+const starsEls = document.querySelectorAll('.star')
+const starSection = document.getElementById('star-section')
+const feedbackMsg = document.getElementById('feedback-msg')
 
 let orderArr = []
 let isOrderComplete = false
@@ -25,6 +28,24 @@ document.addEventListener('click', (e) => {
     }
     else if (e.target.id === 'pay-btn') {
         handlePayClick()
+    }
+})
+
+starSection.addEventListener('click', (e) => {
+    if (e.target.dataset.star) {
+        handleStarClick(e.target.dataset.star)
+    }
+})
+
+starSection.addEventListener('mouseover', (e) => {
+    if (e.target.dataset.star) {
+        setHighlight(Number(e.target.dataset.star))
+    }
+})
+
+starSection.addEventListener('mouseout', (e) => {
+    if (!e.relatedTarget || !e.relatedTarget.closest('.stars')) {
+        clearHighlight()
     }
 })
 
@@ -65,6 +86,11 @@ function handlePayClick() {
     orderArr = []
     isOrderComplete = true
     updateUI()
+}
+
+function handleStarClick(starId) {
+    feedbackMsg.textContent = ratingMessages[starId]
+    starSection.classList.add('hidden')
 }
 
 function getPricing() {
@@ -165,10 +191,24 @@ function displaySuccessScreen() {
 function displayOrderScreen() {
     orderEl.classList.remove('hidden')
     orderSuccessEl.classList.add('hidden')
+    starSection.classList.remove('hidden')
+    feedbackMsg.textContent = ''
 }
 
 function displayMenuScreen() {
     orderEl.classList.add('hidden')
+}
+
+function setHighlight(starId) {
+    clearHighlight()
+    
+    for (let i = 0; i < starId; i++) {
+        starsEls[i].classList.add('highlight')
+    }
+}
+
+function clearHighlight() {
+    starsEls.forEach((star) => star.classList.remove('highlight'))
 }
 
 renderMenu()

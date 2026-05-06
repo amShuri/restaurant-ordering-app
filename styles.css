@@ -164,6 +164,23 @@ button, dialog {
     padding: 2rem;
 }
 
+.feedback-msg {
+    font-size: 2rem;
+}
+
+.star {
+    color: #DEDEDE;
+    cursor: pointer;
+    font-size: 4.5rem;
+    line-height: 1;
+
+}
+
+.highlight {
+    color: #f5b301;
+    transition: color 0.2s ease;
+}
+
 /* Modal */
 .modal {
     border: none;
